@@ -1,0 +1,81 @@
+body {
+    margin: 0; 
+    padding: 0;
+    font-family: serif;
+    background: #0d0d0d url('cemetery.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh; 
+    color: #f0ead6; 
+    overflow: hidden;
+}
+
+.dashboard-container {
+    display: grid; 
+    grid-template-rows: 60px 1fr 70px;
+    height: 100vh; 
+    padding: 10px; 
+    box-sizing: border-box;
+}
+
+.header-row h1 { 
+    font-size: 18px; 
+    text-align: center; 
+    font-weight: 400; 
+    color: #ffffff;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+.grid-body {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 10px;
+}
+
+.glass-card {
+    background: transparent; /* Completely clear with no background tint */
+    backdrop-filter: none; /* Removed blur so the headstone text is crisp */
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Brightened the outline so the tiles are clearly defined */
+    border-radius: 12px; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    font-size: 12px; 
+    text-align: center; 
+    padding: 5px;
+    color: #ffffff;
+    text-shadow: 0px 2px 6px rgba(0, 0, 0, 1), 0px 0px 10px rgba(0, 0, 0, 0.8); /* Heavy text shadows to keep words readable over the busy image */
+}
+
+.double-wide { 
+    grid-column: span 2; 
+}
+
+.uranium-card {
+    background: transparent; /* Transparent background for consistency */
+    border: 1px solid rgba(50, 205, 50, 0.9); /* Strong, crisp neon green outline */
+    box-shadow: inset 0 0 10px rgba(50, 205, 50, 0.2), 0 0 10px rgba(50, 205, 50, 0.2); /* Subtle inner/outer neon line glow */
+    color: #adff2f;
+    text-shadow: 0px 0px 8px rgba(50, 205, 50, 0.8), 0px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.footer-row {
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+    align-items: center;
+    background: transparent; /* Made the footer panel clear as well */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-btn {
+    background: transparent; /* Clear footer buttons */
+    color: #ffffff; 
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 8px 15px; 
+    border-radius: 8px; 
+    font-size: 12px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 1);
+}
