@@ -1,108 +1,57 @@
-/* Base Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background: url('cemetery.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     display: flex;
+    align-items: center; 
     justify-content: center;
-    align-items: center;
-    padding: 20px;
-    font-family: 'Cinzel', serif; /* Clean, elegant serif */
+    padding: 15px; 
+    font-family: 'Cinzel', serif;
 }
 
-/* Flexbox Layout */
-.dashboard-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    width: 100%;
-    max-width: 1400px;
-    justify-content: center;
-}
-
-/* Restoring the TRANSPARENT glass look from your original setup */
-.glass-card {
-    background: rgba(0, 0, 0, 0.15); /* Almost totally transparent */
-    border: 1px solid rgba(244, 236, 216, 0.4); /* Thin, elegant outline */
-    border-radius: 12px;
-    padding: 40px;
-    flex: 1 1 400px;
-    max-width: 600px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-/* Header Separator */
-.card-header {
-    border-bottom: 1px solid rgba(244, 236, 216, 0.2);
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-}
-
-.main-icon {
-    font-size: 3.5rem;
-    color: #f4ecd8; /* Parchment instead of white */
-    margin-bottom: 15px;
-    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.8));
-}
-
-.glass-card h2 {
-    color: #f4ecd8; /* Parchment instead of white */
-    font-size: 2.2rem;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-}
-
-.status-text {
-    color: #bfb7a4;
-    font-family: 'Georgia', serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-}
-
-/* Button Grid - Floating icons with text below */
-.button-grid {
+.tab-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 25px;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+    max-width: 600px; 
 }
 
-/* Removing the ugly boxes, bringing back floating text/icons */
-.dash-btn, .dash-btn-link {
-    background: transparent;
-    border: none;
-    color: #f4ecd8; /* Parchment text */
+/* Restored Transparent Glass Look */
+.glass-tab {
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(244, 236, 216, 0.3);
+    border-radius: 12px;
+    height: 140px; 
     display: flex;
-    flex-direction: column; /* Stacks icon on top, text on bottom */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
     text-decoration: none;
+    color: #f4ecd8;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    transition: transform 0.2s ease;
+    padding: 10px;
 }
 
-.dash-btn i, .dash-btn-link i {
-    font-size: 2.2rem;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
+.double-tab { grid-column: span 2; height: 100px; }
+
+.glass-tab i { font-size: 2rem; margin-bottom: 8px; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5)); }
+.glass-tab span { font-size: 0.8rem; font-weight: 600; text-align: center; letter-spacing: 1px; }
+
+/* Modal remains dark and legible */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+    z-index: 1000; display: flex; justify-content: center; align-items: center; padding: 20px;
 }
 
-.dash-btn span, .dash-btn-link span {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+.glass-card-modal {
+    background: rgba(20, 20, 20, 0.9); padding: 30px; border-radius: 12px;
+    border: 1px solid rgba(244, 236, 216, 0.3); text-align: center;
 }
 
-.dash-btn:hover, .dash-btn-link:hover {
-    transform: scale(1.08); /* Slight zoom on tap */
-}
+.close-btn { position: absolute; top: 20px; right: 20px; background: transparent; border: none; color: #f4ecd8; font-size: 2rem; cursor: pointer; }
