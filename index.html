@@ -4,141 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odom Smart Home Command</title>
-    <!-- Gothic/Victorian Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Using a clean, elegant Serif font to match your original look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="dashboard-container">
-        <!-- Main Balanced Grid Layout (All cards match sizing exactly) -->
-        <main class="grid-layout">
-            
-            <!-- Card 1: Security & Access Link -->
-            <section class="card" onclick="toggleOverlay('security-overlay')">
-                <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h2>Security & Access</h2>
+        
+        <!-- CARD 1: SECURITY & ACCESS -->
+        <div class="glass-card">
+            <div class="card-header">
+                <i class="fa-solid fa-shield-halved main-icon"></i>
+                <h2>SECURITY & ACCESS</h2>
                 <p class="status-text">Perimeter Secure</p>
-            </section>
+            </div>
+            <div class="button-grid">
+                <div class="dash-btn">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>QUICK LIGHTS</span>
+                </div>
+                <div class="dash-btn">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>FAMILY CALENDAR</span>
+                </div>
+                <div class="dash-btn">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>ZOE'S GEMINI</span>
+                </div>
+                <!-- SmartThings Link (Forces a large popup window) -->
+                <a href="https://my.smartthings.com/" onclick="window.open(this.href, 'SmartThings', 'width=1000,height=800'); return false;" class="dash-btn-link">
+                    <i class="fa-solid fa-thermostat"></i>
+                    <span>NEST THERMOSTAT</span>
+                </a>
+            </div>
+        </div>
 
-            <!-- Card 2: Audio Bookshelf Link -->
-            <section class="card" onclick="window.open('#audiobookshelf', '_blank')">
-                <div class="card-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
-                <h2>Audio Bookshelf</h2>
+        <!-- CARD 2: AUDIO BOOKSHELF & WEATHER -->
+        <div class="glass-card">
+            <div class="card-header">
+                <i class="fa-solid fa-book-open-reader main-icon"></i>
+                <h2>AUDIO BOOKSHELF</h2>
                 <p class="status-text">Library Active</p>
-            </section>
-
-            <!-- Card 3: Nest Thermostat -->
-            <section class="card">
-                <div class="card-icon"><i class="fa-solid fa-temperature-half"></i></div>
-                <h2>Nest Thermostat</h2>
-                <p class="status-text">72°F - Idle</p>
-            </section>
-
-            <!-- Card 4: Local Weather -->
-            <section class="card">
-                <div class="card-icon"><i class="fa-solid fa-cloud-moon-rain"></i></div>
-                <h2>Local Weather</h2>
-                <p class="status-text">Scattered Storms</p>
-            </section>
-
-        </main>
-
-        <!-- Streamlined Bottom Navigation Controls -->
-        <footer class="bottom-nav">
-            <button class="nav-btn" onclick="toggleOverlay('lights-overlay')">
-                <i class="fa-solid fa-lightbulb"></i> Quick Lights
-            </button>
-            <button class="nav-btn" onclick="toggleOverlay('calendar-overlay')">
-                <i class="fa-solid fa-calendar-days"></i> Family Calendar
-            </button>
-            <button class="nav-btn" onclick="window.open('https://gemini.google.com', '_blank')">
-                <i class="fa-solid fa-brain"></i> Zoe's Gemini
-            </button>
-        </footer>
-    </div>
-
-    <!-- OVERLAY 1: Security System Overlay Detail -->
-    <div id="security-overlay" class="overlay-modal" onclick="closeOverlayOnOutsideClick(event, 'security-overlay')">
-        <div class="modal-content">
-            <button class="back-btn" onclick="toggleOverlay('security-overlay')">
-                <i class="fa-solid fa-chevron-left"></i> Back
-            </button>
-            <h2><i class="fa-solid fa-shield-halved"></i> System Devices</h2>
-            <table class="security-table">
-                <thead>
-                    <tr>
-                        <th>Device</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><i class="fa-solid fa-video"></i> PTZ Camera 1</td><td class="online">Active</td></tr>
-                    <tr><td><i class="fa-solid fa-video"></i> PTZ Camera 2</td><td class="online">Active</td></tr>
-                    <tr><td><i class="fa-solid fa-video"></i> Alleyway View</td><td class="online">Active</td></tr>
-                    <tr><td><i class="fa-solid fa-lock"></i> Front Door</td><td class="secure">Secured</td></tr>
-                    <tr><td><i class="fa-solid fa-lock"></i> Side Entry</td><td class="secure">Secured</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- OVERLAY 2: Quick Lights Menu -->
-    <div id="lights-overlay" class="overlay-modal" onclick="closeOverlayOnOutsideClick(event, 'lights-overlay')">
-        <div class="modal-content">
-            <button class="back-btn" onclick="toggleOverlay('lights-overlay')">
-                <i class="fa-solid fa-chevron-left"></i> Back
-            </button>
-            <h2><i class="fa-solid fa-lightbulb"></i> Light Control Center</h2>
-            <div class="light-groups-grid">
-                <div class="light-group-card">
-                    <i class="fa-solid fa-bed"></i>
-                    <h3>Bedside Lamps</h3>
-                </div>
-                <div class="light-group-card special-glow">
-                    <i class="fa-solid fa-circle-radiation"></i>
-                    <h3>Uranium Showcase</h3>
-                </div>
-                <div class="light-group-card">
-                    <i class="fa-solid fa-house-chimney-window"></i>
-                    <h3>Outdoor Lights</h3>
-                </div>
+            </div>
+            <div class="button-grid">
+                <!-- Metropolis Weather Link (Forces a large popup window) -->
+                <a href="https://weather.com/weather/tenday/l/Metropolis+IL+62960" onclick="window.open(this.href, 'Weather', 'width=1000,height=800'); return false;" class="dash-btn-link">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                    <span>LOCAL WEATHER</span>
+                </a>
             </div>
         </div>
+
     </div>
 
-    <!-- OVERLAY 3: Family Calendar Menu -->
-    <div id="calendar-overlay" class="overlay-modal" onclick="closeOverlayOnOutsideClick(event, 'calendar-overlay')">
-        <div class="modal-content wide-modal">
-            <button class="back-btn" onclick="toggleOverlay('calendar-overlay')">
-                <i class="fa-solid fa-chevron-left"></i> Back
-            </button>
-            <h2><i class="fa-solid fa-calendar-days"></i> Shared Family Calendar</h2>
-            <div class="calendar-placeholder">
-                <p><i class="fa-solid fa-spinner fa-spin"></i> Loading Zoe's Calendar Feed...</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleOverlay(id) {
-            const overlay = document.getElementById(id);
-            if (overlay.style.display === "flex") {
-                overlay.style.display = "none";
-            } else {
-                overlay.style.display = "flex";
-            }
-        }
-
-        function closeOverlayOnOutsideClick(event, id) {
-            if (event.target.id === id) {
-                toggleOverlay(id);
-            }
-        }
-    </script>
 </body>
 </html>
